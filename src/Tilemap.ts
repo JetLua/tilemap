@@ -28,7 +28,9 @@ export default class extends PIXI.Container {
     for (const item of data.layers) {
       const layer = new Layer({
         data: item,
-        tiles: this.tiles
+        tiles: this.tiles,
+        tileWidth: data.tilewidth,
+        tileHeight: data.tileheight
       })
       this.layer[item.name] = layer
       this.addChild(layer)
@@ -74,13 +76,14 @@ export default class extends PIXI.Container {
 
         this.tiles[firstgid + i] = {
           frame,
-          texture: this.tileset[name]
+          type: 'texture',
+          texture: this.tileset[name],
         }
       }
 
       if (!item.tiles) continue
 
-      for (const {id, animation} of item.tiles) {
+      for (const {id, animation, image, imagewidth, imageheight} of item.tiles) {
         if (animation) {
           let i = 0
           const queue = animation.map(({duration, tileid}: {duration: number, tileid: number}) => {
@@ -99,6 +102,12 @@ export default class extends PIXI.Container {
           }
 
           loop()
+        } else if (image) {
+          this.tiles[firstgid + id] = {
+            type: 'image',
+            frame: new PIXI.Rectangle(0, 0, imagewidth, imageheight),
+            texture: this.tileset[image]
+          }
         }
       }
     }

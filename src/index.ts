@@ -4,6 +4,8 @@ import Tilemap from './Tilemap'
 
 (PIXI as any).Tilemap = Tilemap
 
+// console.log(1)
+
 export {
   Layer,
   Tilemap

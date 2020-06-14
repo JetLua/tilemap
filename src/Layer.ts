@@ -2,13 +2,19 @@ import {ITile} from './util'
 
 export default class extends PIXI.Graphics {
   private data: any
-  private tiles: {[index: number]: ITile} = {}
+  private tileWidth: number
+  private tileHeight: number
   private holes: PIXI.IPoint[] = []
+  private tiles: {[index: number]: ITile} = {}
 
-  constructor({data, tiles}: {data: any, tiles: {[index: number]: ITile}}) {
+  constructor({data, tiles, tileWidth, tileHeight}: {data: any, tiles: {[index: number]: ITile}, tileWidth: number, tileHeight: number}) {
     super()
     this.data = data
     this.tiles = tiles
+    this.tileWidth = tileWidth
+    this.tileHeight = tileHeight
+    this.visible = data.visible
+    this.alpha = data.opacity
     this.update()
   }
 
@@ -36,7 +42,7 @@ export default class extends PIXI.Graphics {
   }
 
   update() {
-    const {data, tiles} = this
+    const {data, tiles, tileWidth, tileHeight} = this
 
     const {
       chunks, opacity, visible,
@@ -51,10 +57,13 @@ export default class extends PIXI.Graphics {
     for (const chunk of chunks) {
       for (let i = 0; i < chunk.data.length; i++) {
         const item = chunk.data[i]
+
         if (!item) continue
-        const {frame, texture} = tiles[item]
-        const x = ((i % chunk.width) + chunk.x) * frame.width
-        const y = ((i / chunk.width | 0) + chunk.y) * frame.height
+
+        const {frame, texture, type} = tiles[item]
+        const x = ((i % chunk.width) + chunk.x) * tileWidth
+        const y = ((i / chunk.width | 0) + chunk.y) * tileHeight
+
         if (this.isHole(x, y)) continue
         const matrix = new PIXI.Matrix()
         matrix.translate(x - frame.x, y - frame.y)

@@ -1,4 +1,5 @@
 export interface ITile {
-  frame: PIXI.Rectangle,
+  type: string
+  frame: PIXI.Rectangle
   texture: PIXI.Texture
 }
