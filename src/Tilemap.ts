@@ -1,7 +1,4 @@
 import Layer from './Layer'
-import {ITile} from './util'
-
-
 
 export default class extends PIXI.Container {
   /** 图块 */

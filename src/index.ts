@@ -1,4 +1,5 @@
 /// <reference types="pixi.js" />
+
 import Layer from './Layer'
 import Tilemap from './Tilemap'
 
@@ -9,4 +10,12 @@ import Tilemap from './Tilemap'
 export {
   Layer,
   Tilemap
+}
+
+declare global {
+  interface ITile {
+    type: string
+    frame: PIXI.Rectangle
+    texture: PIXI.Texture
+  }
 }

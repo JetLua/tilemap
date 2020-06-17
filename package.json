@@ -27,7 +27,7 @@
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
     "pixi.js": "^5.2.4",
-    "rollup": "^2.15.0",
+    "rollup": "^2.16.1",
     "rollup-plugin-terser": "^6.1.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"

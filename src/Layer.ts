@@ -1,5 +1,3 @@
-import {ITile} from './util'
-
 export default class extends PIXI.Graphics {
   private data: any
   private tileWidth: number
