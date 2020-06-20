@@ -1,5 +1,6 @@
 # tilemap
 The tilemap renderer for pixi.js.
+> Currently only **infinite** Map is supported and the layer type is **CSV**.
 
 [DEMO](https://funny.lufei.so/tilemap/)
 

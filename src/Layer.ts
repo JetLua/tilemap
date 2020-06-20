@@ -47,9 +47,6 @@ export default class extends PIXI.Graphics {
       startx, starty, x, y
     } = data
 
-    this.x = (x - startx) * 16
-    this.y = (y - starty) * 16
-
     this.clear()
 
     for (const chunk of chunks) {
