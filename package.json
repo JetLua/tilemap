@@ -1,6 +1,6 @@
 {
   "name": "@iro/tilemap",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Collision engine may evolve into physical engine.",
   "main": "dist/tilemap.min.js",
   "module": "dist/tilemap.es.js",
